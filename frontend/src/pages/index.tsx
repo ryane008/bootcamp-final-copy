@@ -4,7 +4,6 @@ import { useState } from "react";
 import {Db, MongoClient, ObjectId} from "mongodb";
 import bodyParser from "body-parser";
 import ClickyBox from "@/components/ClickyBox";
-require("dotenv").config(".env");
 import ScoreCounter  from '@/components/ScoreCounter';
 import { Box, Button } from "@chakra-ui/react";
 import './styles.css';
@@ -48,9 +47,9 @@ export default function Home() {
         </div>
       )}
       /*Reset and End game buttons, which should be located at the bottom*/
-      <button onClick={reset}>
+      <Button onClick={reset}>
         Reset Game and Score (data does not save)
-      </button>
+      </Button>
       {!gameOver && <button onClick={endGame}>End Game</button>}
     </div>
   );

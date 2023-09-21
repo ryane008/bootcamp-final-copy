@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 interface Props{
     duration: number;
 }
-const LoadingBar = ({ duration }:Props) => {
+function LoadingBar({ duration }:Props){
   const [isLoading, setIsLoading] = useState(true);
   const [isResetButtonEnabled, setIsResetButtonEnabled] = useState(false);
 

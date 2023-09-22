@@ -10,6 +10,7 @@ import './styles.css';
 import '@/components/EndGame'
 import EndGame from "@/components/EndGame";
 import UserBox from "@/components/UserBox";
+import axios from "axios";
 
 //import { Inter } from 'next/font';
 
@@ -24,7 +25,24 @@ export default function Home() {
   
   const endGame = () => {
     setGameOver(true);
+    updatePlayerScore;
   };
+
+  const updatePlayerScore = () => {
+    // Make a PATCH request to update the player's score
+    axios
+      .patch(`/players/${userID}`, {
+        score: count // Assuming your API expects the "score" field in the request body
+      })
+      .then((response) => {
+        // Handle success, if needed
+        console.log("Score updated successfully");
+      })
+      .catch((error) => {
+        // Handle error, if needed
+        console.error("Error updating score:", error);
+      });
+};
 
   const reset = () =>{
     setGameOver(false);

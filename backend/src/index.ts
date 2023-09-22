@@ -69,7 +69,7 @@ app.post("/players", async (req, res) => {
     }
   });
 
-// TODO: Implement a route handler that gets a post associated with a given playerID.
+// TODO: Implement a route handler that gets a player's info associated with a given playerID.
 app.get("/players/:playerID", async (req, res) => {
     // res.send("TODO: GET /posts/{postID}");
     const playerID = req.params.playerID;

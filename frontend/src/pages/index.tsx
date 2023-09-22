@@ -75,7 +75,7 @@ export default function Home() {
           <EndGame/>
           <ScoreCounter count={count}/>
           <Button onClick={reset}>
-            Reset Game and Score (data does not save)
+            Reset Game and Score
           </Button>
         </div>
         
@@ -85,10 +85,12 @@ export default function Home() {
           <ClickyBox score={1} loadTime={10} updateCount={updateCount} />
           <ClickyBox score={10} loadTime={2000} updateCount={updateCount} />
           <ClickyBox score={50} loadTime={5000} updateCount={updateCount} />
+          {!gameOver && <button onClick={endGame}>End Game</button>}
+          <Button onClick={reset}>
+            Reset Game and Score (data will not be saved!)
+          </Button>
         </div>
       )}
-      /*Reset and End game buttons, which should be located at the bottom*/
-      {!gameOver && <button onClick={endGame}>End Game</button>}
     </div>
   );
 }

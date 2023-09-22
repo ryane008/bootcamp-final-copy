@@ -17,7 +17,13 @@ function ScoreCounter({count, children}:Props){
     useEffect(() => {
       axios.get('/players/highest-score')
     .then((response) => {
-      setHighscore(response.data);
+      const backendHighScore = response.data.score;
+      if(count > backendHighScore){
+        setHighscore(count);
+      }
+      else{
+        setHighscore(backendHighScore);
+      }
       setIsLoading(false);
     })
     .catch((error) => {
@@ -27,11 +33,11 @@ function ScoreCounter({count, children}:Props){
     
   return (
     !isLoading ? <div>
-            <h4>High Score: </h4>
+            <h4>All-time High Score: {highscore}</h4>
             <h4>Your Score: {count}</h4>
         </div> : 
         <div>
-            <h4>Loading High Score</h4>
+            <h4>Loading All-time High Score</h4>
             <h4>Your Score: {count}</h4>	
         </div>
     

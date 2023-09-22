@@ -80,11 +80,24 @@ export default function Home() {
         </div>
         
       ) : (
-        <div>
+        <div className= "container">
           <ScoreCounter count={count} />
-          <ClickyBox score={1} loadTime={10} updateCount={updateCount} />
-          <ClickyBox score={10} loadTime={2000} updateCount={updateCount} />
-          <ClickyBox score={50} loadTime={5000} updateCount={updateCount} />
+          <div className="clicky"> 
+            <ClickyBox score={1} loadTime={10} updateCount={updateCount} />
+          </div>
+            
+          <div className="clicky"> 
+          <ClickyBox score={10} loadTime={2000} updateCount={updateCount}/>
+          </div>
+
+          <div className="clicky"> 
+            <ClickyBox score={50} loadTime={5000} updateCount={updateCount} />
+          </div>
+
+
+      
+
+          
           {!gameOver && <button onClick={endGame}>End Game</button>}
           <Button onClick={reset}>
             Reset Game and Score (data will not be saved!)

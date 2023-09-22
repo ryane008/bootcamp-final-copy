@@ -9,14 +9,19 @@ import { Box, Button } from "@chakra-ui/react";
 import './styles.css';
 import '@/components/EndGame'
 import EndGame from "@/components/EndGame";
+import UserBox from "@/components/UserBox";
+
 //import { Inter } from 'next/font';
 
 //const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [count, setCount] = useState(0);
+  const [username, setUsername] = useState("Unnamed");
+  const [userID, setUserID] = useState(new ObjectId());
 
   const [gameOver, setGameOver] = useState(false);
+  
   const endGame = () => {
     setGameOver(true);
   };
@@ -33,11 +38,29 @@ export default function Home() {
     }
   };
 
+  const updateUser = (name: string) => {
+    // Update the count based on the scoreToAdd
+    setUsername(name);
+  };
+
+  const updateUserID = (id: ObjectId) => {
+    setUserID(id);
+  }
+
   return (
     <div>
       <h1 className="title-card">Welcome to Clicky Game!!!</h1>
+      <h2 className="title-card">Player: {username}</h2>
+      <UserBox updateUser={updateUser} updateID={updateUserID}/>
       {gameOver ? (
-        <EndGame score={count}/>
+        <div>
+          <EndGame/>
+          <ScoreCounter count={count}/>
+          <Button onClick={reset}>
+            Reset Game and Score (data does not save)
+          </Button>
+        </div>
+        
       ) : (
         <div>
           <ScoreCounter count={count} />
@@ -47,9 +70,6 @@ export default function Home() {
         </div>
       )}
       /*Reset and End game buttons, which should be located at the bottom*/
-      <Button onClick={reset}>
-        Reset Game and Score (data does not save)
-      </Button>
       {!gameOver && <button onClick={endGame}>End Game</button>}
     </div>
   );

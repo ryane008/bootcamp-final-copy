@@ -1,14 +1,3 @@
-import { FormEvent, JSX, useState } from "react";
-import {
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-} from "@chakra-ui/modal";
-import { Button, Input, Textarea, VStack } from "@chakra-ui/react";
 import LoadingBar from "./LoadingBar";
 
 interface Props {

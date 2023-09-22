@@ -27,18 +27,18 @@ app.get("/players", async (req, res) => {
     return res.json(result);
 });
 
-//route handler that will return the highest score
+// route handler that will return the highest score
 app.get("/players/highest-score", async (req, res) => {
     const collection = db.collection("players");
     try {
       // Find all players
       const players = await collection.find({}).toArray();
-  
+
       // Find the highest score among players
       const highestScore = players.reduce((maxScore, player) => {
         return Math.max(maxScore, player.score);
       }, 0); // Initialize maxScore with 0
-  
+
       // Send the highest score in the response
       return res.json({ highestScore });
     } catch (error) {
@@ -46,11 +46,11 @@ app.get("/players/highest-score", async (req, res) => {
     }
 });
 
-//for adding new players onto the database
+// for adding new players onto the database
 app.post("/players", async (req, res) => {
     const collection = db.collection("players");
 
-    //Taking all the information we passed from the post body in 
+    // Taking all the information we passed from the post body in
     const playerBodyData = req.body;
 
     // Creating a new player document
@@ -111,7 +111,7 @@ app.delete("/players/:playerID", async (req, res) => {
 
 // start the Express server
 function start() {
-    const client = new MongoClient("<YOUR MONGO DB URL GOES HERE>");
+    const client = new MongoClient(process.env.ATLAS_URI);
     client.connect()
         .then(() => {
             console.log('Connected successfully to server');

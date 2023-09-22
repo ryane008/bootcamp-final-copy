@@ -1,13 +1,10 @@
 import { useState } from "react";
-//import NewPostModal from "@/components/NewPostModal";
-//import Post from "@/components/Post";
 import {Db, MongoClient, ObjectId} from "mongodb";
 import bodyParser from "body-parser";
 import ClickyBox from "@/components/ClickyBox";
 import ScoreCounter  from '@/components/ScoreCounter';
 import { Box, Button } from "@chakra-ui/react";
-import './styles.css';
-import '@/components/EndGame'
+import '@/styles/styles.css'
 import EndGame from "@/components/EndGame";
 import UserBox from "@/components/UserBox";
 import axios from "axios";
@@ -93,11 +90,6 @@ export default function Home() {
           <div className="clicky"> 
             <ClickyBox score={50} loadTime={5000} updateCount={updateCount} />
           </div>
-
-
-      
-
-          
           {!gameOver && <button onClick={endGame}>End Game</button>}
           <Button onClick={reset}>
             Reset Game and Score (data will not be saved!)

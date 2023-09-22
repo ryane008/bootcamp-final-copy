@@ -5,12 +5,12 @@ import { useEffect } from 'react';
 
 interface Props{
     count : number;
-    children?: React.ReactNode;
+    
 
 }
 
 
-function ScoreCounter({count, children}:Props){
+function ScoreCounter({count}:Props){
     const [highscore, setHighscore] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
 
